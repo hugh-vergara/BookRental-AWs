@@ -27,8 +27,23 @@ public final class BookRental {
     /**
      *
      */
+    //CheckStyle warning is present
+    private static ArrayList<Book> library = new ArrayList<>();
 
-    public static ArrayList<Book> library = new ArrayList<>();
+    /***
+     *
+     * @param book
+     */
+    public static void addBook(final Book book) {
+        library.add(book);
+    }
+
+    /***
+     *@return library
+     */
+    public static ArrayList<Book> getLibrary() {
+        return library;
+    }
 
     /**
      *
@@ -57,21 +72,15 @@ public final class BookRental {
     */
     public static void displayBooks() {
         for (Book b : library) {
-            System.out.println(b.getTitle()+ b.getAuthor()
-                    + b.getYearPublished());
+            System.out.println(
+                    b.getTitle() + b.getAuthor() + b.getYearPublished());
         }
     }
 
     /***
     *
     */
-    
-    /**
-     *
-     */
-    
-    
-    
+
     public static void displayRentedBooks() {
         System.out.println("\nBooks rented:");
         for (Book b : library) {
@@ -90,18 +99,19 @@ public final class BookRental {
         displayBooks();
         rentBooks();
         displayRentedBooks();
+        clearLibrary();
     }
-    
+
     /**
-     * 
+    *
      */
     public static void clearLibrary() {
         library.clear();
     }
-    
+
     /**
-     * 
-     * @return
+     *
+     * @return library.size
      */
     public static int getLibrarySize() {
         return library.size();

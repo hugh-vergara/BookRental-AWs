@@ -38,13 +38,7 @@ public class Book {
         return title;
     }
 
-    /**
-     *
-     * @param newTitle
-     */
-//    public void setTitle(final String newTitle) {
-//        this.title = newTitle;
-//    }
+
 
     /**
      *
@@ -54,13 +48,7 @@ public class Book {
         return author;
     }
 
-    /**
-     *
-     * @param newAuthor
-     */
-//    public void setAuthor(final String newAuthor) {
-//        this.author = newAuthor;
-//    }
+
 
     /**
      *
@@ -70,13 +58,7 @@ public class Book {
         return yearPublished;
     }
 
-    /**
-     *
-     * @param newYear
-     */
-//    public void setYearPublished(final int newYear) {
-//        this.yearPublished = newYear;
-//    }
+
 
     /**
      *
@@ -97,9 +79,5 @@ public class Book {
         return this.isRented;
     }
 
-    /**
-     *
-     */
-    
-    
+
 }

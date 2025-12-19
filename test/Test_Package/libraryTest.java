@@ -29,40 +29,40 @@ class libraryTest {
     
     @Test
     void TestAddingofFictionBookShouldBeAllowed_AndBooksIsNotRentedByDefault() {
-        BookRental.library.add(new FictionBook("The Lord of the Flies",
+        BookRental.addBook(new FictionBook("The Lord of the Flies",
                 "William Golding", 1954));
-        BookRental.library.add(new NonFictionBook("The Gay Science",
+        BookRental.addBook(new NonFictionBook("The Gay Science",
                 "Friedrich Nietzche", 1882));
 
-        Book firstBook = BookRental.library.get(0);
+        Book firstBook = BookRental.getLibrary().get(0);
 
         // THIS IS ALL ABOUT THE FIRST FICTION BOOK
         assertTrue(firstBook instanceof FictionBook,
                 "Index 0 should be a FictionBook");
-        BookRental.library.get(0).isRented();
+        BookRental.getLibrary().get(0).isRented();
 
-        assertEquals(2, BookRental.library.size());
+        assertEquals(2, BookRental.getLibrary().size());
         assertEquals("The Lord of the Flies",
-                BookRental.library.get(0).getTitle());
+                BookRental.getLibrary().get(0).getTitle());
 
         // SECOND IS ABOUT NONFICTIONBOOK
-        Book secondBook = BookRental.library.get(1);
+        Book secondBook = BookRental.getLibrary().get(1);
         assertTrue(secondBook instanceof NonFictionBook,
                 "Index 1 should be a NonFictionBook");
-        BookRental.library.get(1).isRented();
+        BookRental.getLibrary().get(1).isRented();
 
-        assertEquals(2, BookRental.library.size());
-        assertEquals("The Gay Science", BookRental.library.get(1).getTitle());
+        assertEquals(2, BookRental.getLibrary().size());
+        assertEquals("The Gay Science", BookRental.getLibrary().get(1).getTitle());
     }
 
     
     @Test
     void TestRentMethod_ItWouldRentTheBookWhen_RentMethodisCalled() {
        
-        BookRental.library.add(new FictionBook("Don Quixote",
+        BookRental.addBook(new FictionBook("Don Quixote",
                 "Miguel De Cervantes", 1954));
        
-       boolean result = BookRental.library.get(0).rent();
+       boolean result = BookRental.getLibrary().get(0).rent();
 
        assertTrue(result,
                "The rent() method should return true when a book is successfully rented");
@@ -73,11 +73,11 @@ class libraryTest {
     void AddBooks_AndThenDetermineIfTheSizeIsEqual() {
         
         BookRental.clearLibrary();
-        BookRental.library.add( new FictionBook("The Great Gatsby", "Francis Scott Key Fitzgerald",1925));
+        BookRental.addBook( new FictionBook("The Great Gatsby", "Francis Scott Key Fitzgerald",1925));
         
         assertEquals(1,BookRental.getLibrarySize());
         
-        BookRental.library.add(new NonFictionBook("American Kingpin","Nick Bilton",2017));
+        BookRental.addBook(new NonFictionBook("American Kingpin","Nick Bilton",2017));
         assertEquals(2,BookRental.getLibrarySize());
         
         
@@ -86,30 +86,30 @@ class libraryTest {
     
     @Test
     void AddTwoBooksRent_Only1Book_ShouldReturnOnly1Rented() {
-        BookRental.library.add(new FictionBook("End of Story","A.J Finn", 2010));
-        BookRental.library.add(new NonFictionBook("Curry-Ya and Ken","Kenneth Ligutom", 2010));
+        BookRental.addBook(new FictionBook("End of Story","A.J Finn", 2010));
+        BookRental.addBook(new NonFictionBook("Curry-Ya and Ken","Kenneth Ligutom", 2010));
         
-        BookRental.library.get(0).rent();
+        BookRental.getLibrary().get(0).rent();
         
-        assertEquals(true, BookRental.library.get(0).isRented());
+        assertEquals(true, BookRental.getLibrary().get(0).isRented());
 
     }
     
     @Test
     void RentBooks_WithInvalidIndexShouldReturnError() {
         
-        BookRental.library.add( new FictionBook("The Devil in The White City", "Erik Larson",2003));
+        BookRental.addBook( new FictionBook("The Devil in The White City", "Erik Larson",2003));
        
         
         assertThrows(IndexOutOfBoundsException.class, () -> {
-            BookRental.library.get(99).rent();
+            BookRental.getLibrary().get(99).rent();
         }, "Accessing index 1 should throw an IndexOutOfBoundsException.");
     }
     
     @Test
     void DisplayRented_Books_Add1fictionBook_1Non1RentONly1BookShouldReturnWouldMatch() {
-        BookRental.library.add(new FictionBook("Kari Raisu","Khan Santos ",2323));
-        BookRental.library.add(new NonFictionBook("Joshua","Caranzo", 2010)); 
+        BookRental.addBook(new FictionBook("Kari Raisu","Khan Santos ",2323));
+        BookRental.addBook(new NonFictionBook("Joshua","Caranzo", 2010)); 
         
         BookRental.displayBooks();
         
